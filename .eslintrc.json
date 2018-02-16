@@ -5,8 +5,7 @@
   },
   "env": {
     "es6": true,
-    "node": true,
-    "browser": true
+    "node": true
   },
   "rules": {
     "no-extra-parens": ["warn", "all", {

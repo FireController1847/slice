@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run lint",
-    "lint": "cd src && eslint . *.js",
-    "lint:fix": "cd src && eslint . *.js --fix"
+    "lint": "eslint ./src *.js",
+    "lint:fix": "eslint ./src *.js --fix"
   },
   "repository": {
     "type": "git",

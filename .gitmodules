@@ -1,3 +1,3 @@
-[submodule "old"]
-	path = old
+[submodule "Slice Old"]
+	path = Slice Old
 	url = https://github.com/FireController1847/slice-old.git

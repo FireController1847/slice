@@ -59,3 +59,6 @@ typings/
 
 # Windows Custom Icon
 desktop.ini
+
+# Tokens
+Tokens.js

@@ -1,0 +1,23 @@
+{
+  "name": "slice",
+  "version": "1.0.0",
+  "description": "Your #2 Moderation Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FireController1847/slice.git"
+  },
+  "author": "FireController#1847",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FireController1847/slice/issues"
+  },
+  "homepage": "https://github.com/FireController1847/slice#readme",
+  "devDependencies": {
+    "discord.js": "github:discordjs/discord.js",
+    "mongodb": "^3.0.2"
+  }
+}

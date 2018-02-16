@@ -20,6 +20,7 @@
   "homepage": "https://github.com/FireController1847/slice#readme",
   "devDependencies": {
     "discord.js": "github:discordjs/discord.js",
+    "eslint": "^4.17.0",
     "mongodb": "^3.0.2"
   }
 }

@@ -62,7 +62,11 @@ class DBManager {
   // Connect
   async connect() {
     this.debug('Creating Database...');
-    this.mclient = await MongoClient.connect(this.url, null);
+    try {
+      this.mclient = await MongoClient.connect(this.url, null);
+    } catch (e) {
+      return this.error(e);
+    }
     this.db = this.mclient.db(mongo.database);
 
     this.db.on('close', mongoError => {
@@ -95,7 +99,7 @@ class DBManager {
     await gCollection.deleteMany({ gid });
     const gData = new DefaultServer(gid);
     await gCollection.insertOne(gData);
-    console.log(!guild ? `I've joined ${gid}.` : `I've ${(isMissing ? 'added missing guild' : 'joined')} ` +
+    this.debug(!guild ? `I've joined ${gid}.` : `I've ${(isMissing ? 'added missing guild' : 'joined')} ` +
       `${guild.name} (${guild.id}) owned by ${guild.owner.user.username} (${guild.owner.id}).`);
     return gData;
   }

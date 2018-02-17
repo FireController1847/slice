@@ -1,6 +1,12 @@
 /* eslint-disable max-len */
 exports.messages = {
-  prefix: 's!'
+  prefix: 'si!'
+};
+
+exports.files = {
+  commands: './commands',
+  events: './events',
+  logs: './logs'
 };
 
 exports.mdb = {

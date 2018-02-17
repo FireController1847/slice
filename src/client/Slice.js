@@ -1,5 +1,7 @@
 const { Client, Collection } = require('discord.js');
 const { DBManager } = require('../database/DBManager.js');
+const { files } = require('../util/Config.js');
+const fs = require('fs');
 const klaw = require('klaw');
 const moment = require('moment-timezone');
 const path = require('path');
@@ -22,13 +24,35 @@ class Slice extends Client {
     this.login(token);
   }
   debug(...args) {
-    console.log(`[${moment().format(`HH:MM:SS`)}]`, `[Shard ${this.shard.id}]`, ...args);
+    const date = moment();
+    console.log(`[${date.format('HH:MM:SS')}]`, `[Shard ${this.shard.id}]`, ...args);
+    this.log(`[${date.format('HH:MM:SS')}] [Shard ${this.shard.id}] ${args.join(' ')}`).catch(() => {
+      // ...
+    });
   }
   error(...args) {
-    console.error(`[${moment().format(`HH:MM:SS`)}]`, `[Shard ${this.shard.id}]`, ...args);
+    const date = moment();
+    console.error(`[${date.format('HH:MM:SS')}]`, `[Shard ${this.shard.id}]`, ...args);
+    this.log(`[${date.format('HH:MM:SS')}] [Shard ${this.shard.id}] ${args.join(' ')}`).catch(() => {
+      // ...
+    });
+  }
+  log(string) {
+    return new Promise((resolve, reject) => {
+      fs.open(`${files.logs}/Log_${moment().format('MM-DD-YYYY')}.log`, 'a', (err1, fd) => {
+        if (err1) return reject(err1);
+        fs.write(fd, `${string}\n`, err2 => {
+          if (err2) return reject(err2);
+          fs.close(fd, err3 => {
+            if (err3) return reject(err3);
+            return resolve();
+          });
+        });
+      });
+    });
   }
   addcommands(reload = false) {
-    klaw('./commands').on('data', file => {
+    klaw(files.commands).on('data', file => {
       file = path.parse(file.path);
       if (!file.ext || file.ext != '.js') return;
       file.special = `${file.dir}/${file.base}`;
@@ -40,18 +64,18 @@ class Slice extends Client {
     });
   }
   addevents(reload = false) {
-    klaw('./events').on('data', file => {
+    if (reload) this.events.forEach(event => this.removeAllListeners(event.event));
+    klaw(files.events).on('data', file => {
       file = path.parse(file.path);
       if (!file.ext || file.ext != '.js') return;
       file.special = `${file.dir}/${file.base}`;
       if (reload && require.cache[require.resolve(file.special)]) {
-        this.removeAllListeners();
         delete require.cache[require.resolve(file.special)];
       }
-      const event = new (require(file.special))(this);
+      const event = new (require(file.special))(this, file.special);
       this.events.set(event.event, event);
       this.on(event.event, (...args) => {
-        this.events.get(event.event).execute(...args);
+        event.execute(...args);
       });
     });
   }

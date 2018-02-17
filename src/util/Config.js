@@ -12,7 +12,8 @@ exports.files = {
 exports.mdb = {
   blacklist: 'blacklist',
   donations: 'donations',
-  guilds: 'guilds'
+  guilds: 'guilds',
+  afk: 'afk'
 };
 
 exports.lang = {

@@ -25,6 +25,29 @@ class Message extends Event {
         m.content = `${m.prefix}prefix`;
       }
     }
+    // AFK
+    try {
+      const afkCollection = this.client.dbm.collection(mdb.afk);
+      const afkData = await afkCollection.findOne({ id: m.author.id });
+      if (afkData && afkData.id == m.author.id) {
+        await m.channel.send(':sparkles: Welcome back! I\'ve removed your AFK message.');
+        await afkCollection.deleteMany({ id: m.author.id });
+      }
+    } catch (e) {
+      // ...
+    }
+    // AFK Tag
+    if (m.mentions.users.size > 0) {
+      try {
+        const afkCollection = await this.client.dbm.collection(mdb.afk);
+        const afkData = await afkCollection.findOne({ id: m.mentions.users.first().id });
+        if (afkData && afkData.id != m.author.id) {
+          await m.channel.send(`:diamond_shape_with_a_dot_inside: ${afkData.name} is currently AFK: ${afkData.reason}`);
+        }
+      } catch (e) {
+        // ...
+      }
+    }
     if (!m.content.startsWith(m.prefix)) return;
     m.isOwner = owners.includes(m.author.id);
     m.args = m.content.split(' ');
@@ -75,7 +98,12 @@ class Message extends Event {
       this.client.debug(`User ${m.author.username} (${m.author.id}) issued private command ` +
         `${m.prefix}${m.command} in DM's.`);
     }
-    return command.execute(m);
+    try {
+      await Promise.resolve(command.execute(m));
+    } catch (e) {
+      command.end(m.channel);
+      return m.errors.internalError(e);
+    }
   }
 }
 

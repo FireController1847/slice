@@ -119,6 +119,9 @@ class DBManager {
     }
     return gData;
   }
+  collection(name) {
+    return this.db.collection(name);
+  }
 }
 
 module.exports.DBManager = DBManager;

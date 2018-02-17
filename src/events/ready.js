@@ -1,5 +1,5 @@
-const Event = require('../../structures/Event.js');
-const { messages } = require('../../util/Config.js');
+const Event = require('../structures/Event.js');
+const { messages } = require('../util/Config.js');
 
 class Ready extends Event {
   constructor(client, path) {

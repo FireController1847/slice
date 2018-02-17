@@ -23,6 +23,10 @@ exports.lang = {
     '<https://discordapp.com/oauth2/authorize?permissions=36768768&scope=bot&client_id=255933783293820928>'
 };
 
+exports.colors = {
+  orange: '#FE8B00'
+};
+
 exports.owners = [
   '112732946774962176'
 ];

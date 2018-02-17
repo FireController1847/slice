@@ -20,12 +20,14 @@
   "homepage": "https://github.com/FireController1847/slice#readme",
   "devDependencies": {
     "discord.js": "github:discordjs/discord.js",
+    "embed-creator": "^1.2.3",
     "eslint": "^4.17.0",
     "jszip": "^3.1.5",
     "klaw": "^2.1.1",
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.14",
-    "mongodb": "^3.0.2"
+    "mongodb": "^3.0.2",
+    "pretty-ms": "^3.1.0"
   },
   "dependencies": {}
 }

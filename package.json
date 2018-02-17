@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/FireController1847/slice#readme",
   "devDependencies": {
+    "args-parser": "^1.1.0",
     "discord.js": "github:discordjs/discord.js",
     "embed-creator": "^1.2.3",
     "eslint": "^4.17.0",
@@ -27,7 +28,10 @@
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.14",
     "mongodb": "^3.0.2",
-    "pretty-ms": "^3.1.0"
+    "pretty-ms": "^3.1.0",
+    "trianglify": "^1.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "canvas": "^1.6.9"
+  }
 }

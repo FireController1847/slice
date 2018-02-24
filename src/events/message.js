@@ -10,7 +10,7 @@ class Message extends Event {
     m.isDM = m.guild ? false : true;
     if (!m.isDM) {
       try {
-        m.guildData = await this.client.dbm.getGuildData(m.guild.id);
+        m.guildData = await this.client.dbm.fetchGuildData(m.guild.id);
       } catch (e) {
         m.guildData = null;
       }

@@ -92,9 +92,11 @@ class Slice extends Client {
     return vCount.reduce((a, b) => a + b, 0);
   }
   getCommand(name) {
-    if (this.commands.has(name)) return this.commands.get(name);
-    this.commands.forEach(c => { if (c.aliases && c.aliases.includes(name)) return c; });
-    return null;
+    return new Promise((resolve, reject) => {
+      if (this.commands.has(name)) return resolve(this.commands.get(name));
+      this.commands.forEach(c => { if (c.aliases && c.aliases.includes(name)) return resolve(c); });
+      return resolve(null);
+    });
   }
   getAllArguments(args, text) {
     return text.substring(args.map(a => a.length + 1).reduce((a, b) => a + b, 0), text.length);

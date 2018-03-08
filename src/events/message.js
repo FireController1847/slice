@@ -89,7 +89,7 @@ class Message extends Event {
     } catch (e) {
       // ...
     }
-    const command = this.client.getCommand(m.command);
+    const command = await this.client.getCommand(m.command);
     if (!command) return;
     if (!m.isDM) {
       this.client.debug(`User ${m.author.username} (${m.author.id}) issued server command ` +

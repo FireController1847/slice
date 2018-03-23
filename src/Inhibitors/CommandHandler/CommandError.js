@@ -9,7 +9,7 @@ class CommandHandlerError extends Listener {
   }
 
   exec(e, m) {
-    return m.channel.send(`There was an internal error running this command.\`\`\`js\n${e}\n\`\`\``);
+    return m.channel.send(`There was an internal error running this command.\`\`\`js\n${e.stack || e}\n\`\`\``);
   }
 }
 

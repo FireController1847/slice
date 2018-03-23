@@ -22,6 +22,7 @@
     "discord-akairo": "github:1Computer1/discord-akairo",
     "discord.js": "github:hydrabolt/discord.js",
     "embed-creator": "^1.2.3",
-    "moment-timezone": "^0.5.14"
+    "moment-timezone": "^0.5.14",
+    "pretty-ms": "^3.1.0"
   }
 }

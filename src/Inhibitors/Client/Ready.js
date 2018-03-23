@@ -1,8 +1,8 @@
 const { Listener } = require('discord-akairo');
 
-class Ready extends Listener {
+class ClientReady extends Listener {
   constructor() {
-    super('ready', {
+    super('clientReady', {
       emitter: 'client',
       event: 'ready'
     });
@@ -17,4 +17,4 @@ class Ready extends Listener {
   }
 }
 
-module.exports = Ready;
+module.exports = ClientReady;

@@ -7,8 +7,13 @@ const client = new AkairoClient({
   prefix: 'sa$',
   allowMention: false,
   commandDirectory: path.join(__dirname, 'Commands'),
-  listenerDirectory: path.join(__dirname, 'Inhibitors')
+  listenerDirectory: path.join(__dirname, 'Inhibitors'),
+  // Custom Options
+  colors: {
+    orange: '#FE8B00'
+  }
 }, {
   disableEveryone: true
 });
+
 client.login(token);

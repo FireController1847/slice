@@ -4,7 +4,8 @@ class Ping extends Command {
   constructor() {
     super('ping', {
       aliases: ['ping'],
-      description: 'Gets the current speed of the WebSocket.'
+      description: 'Gets the current speed of the WebSocket.',
+      typing: true
     });
   }
   exec(m) {

@@ -1,4 +1,3 @@
-const ce = require('embed-creator');
 const { Command } = require('discord-akairo');
 
 class Info extends Command {
@@ -15,7 +14,8 @@ class Info extends Command {
           id: 'content',
           match: 'rest'
         }
-      ]
+      ],
+      clientPermissions: ['EMBED_LINKS']
     });
   }
   exec(m, args) {

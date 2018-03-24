@@ -5,9 +5,10 @@ const { token } = require('./Data/Tokens.js');
 const client = new AkairoClient({
   ownerID: '112732946774962176',
   prefix: 'sa$',
-  allowMention: false,
+  allowMention: true,
+  emitters: { process },
   commandDirectory: path.join(__dirname, 'Commands'),
-  listenerDirectory: path.join(__dirname, 'Inhibitors'),
+  listenerDirectory: path.join(__dirname, 'Listeners'),
   // Custom Options
   colors: {
     orange: '#FE8B00'

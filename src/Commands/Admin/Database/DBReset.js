@@ -4,7 +4,8 @@ class DBDebug extends Command {
   constructor() {
     super('dbreset', {
       description: 'Resets the guild\'s settings.',
-      typing: true
+      typing: true,
+      userPermissions: ['ADMINISTRATOR']
     });
   }
   async exec(m) {

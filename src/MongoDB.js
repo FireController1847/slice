@@ -1,30 +1,29 @@
 const { MongoClient } = require('mongodb');
 const { mongo } = require('./Data/Tokens.js');
+const _ = require('lodash');
 
 class DefaultServer {
   constructor(gid) {
     this.gid = gid;
     this.settings = {
       notifications: true,
-      noInvite: false,
-      noLink: false,
       prefix: 'default'
     };
     this.events = {
       join: {
         message: {
           enabled: false,
-          channel: '',
+          channel: 0,
           message: ''
         },
         role: {
           enabled: false,
-          channel: '',
-          message: ''
+          channel: 0,
+          roleId: ''
         },
         botRole: {
           enabled: false,
-          channel: '',
+          channel: 0,
           roleId: ''
         }
       },
@@ -96,6 +95,9 @@ class MongoDB {
     }
     return this.collections.guilds.col;
   }
+  verifyDataIntegrity(gid, data) {
+    return _.merge(new DefaultServer(gid), data);
+  }
   async createGuild(gid, isMissing = false) {
     if (!this.db) throw new Error('Database Not Ready');
     const guild = this.bot.guilds.get(gid);
@@ -113,6 +115,7 @@ class MongoDB {
     let data = await this.guilds.findOne({ gid });
     if (!data) data = await this.createGuild(gid, true);
     delete data._id;
+    data = this.verifyDataIntegrity(gid, data);
     return data;
   }
 }

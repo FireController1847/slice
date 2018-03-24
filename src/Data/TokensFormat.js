@@ -19,5 +19,9 @@ exports.mongo = {
   password: '',
   host: '',
   port: '',
-  database: ''
+  database: '',
+  collections: {
+    guilds: 'guilds',
+    donations: 'donations'
+  }
 };

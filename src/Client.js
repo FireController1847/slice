@@ -1,4 +1,5 @@
 const { AkairoClient } = require('discord-akairo');
+const MongoDB = require('./MongoDB.js');
 const path = require('path');
 const { token } = require('./Data/Tokens.js');
 
@@ -16,5 +17,7 @@ const client = new AkairoClient({
 }, {
   disableEveryone: true
 });
+
+client.mongo = new MongoDB(client);
 
 client.login(token);

@@ -3,7 +3,8 @@ const { Command } = require('discord-akairo');
 class DBDebug extends Command {
   constructor() {
     super('dbreset', {
-      description: 'Resets the guild\'s settings.'
+      description: 'Resets the guild\'s settings.',
+      typing: true
     });
   }
   async exec(m) {

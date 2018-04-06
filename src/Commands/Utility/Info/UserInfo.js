@@ -16,6 +16,7 @@ class Information {
     this.joined = moment(member.joinedAt).tz('America/Denver').format('dddd, MMMM Do, YYYY [at] h:mm A zz');
     this.status = member.user.presence.status ? capFirstLetter(member.user.presence.status) : 'Offline';
     this.activity = member.user.presence.activity ? capFirstLetter(member.user.presence.activity.name) : 'None';
+    if (!this.activity.replace(/\s/g, '')) this.activity = 'None';
     this.avatar = member.user.displayAvatarURL({ size: 2048 });
     this.vc = member.voiceChannel ? member.voiceChannel.name : 'None';
     this.roles = member.roles.size;

@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2018, Visual Fire Development  All Rights Reserved
+ * Copyrights licensed under the GNU General Public License v3.0.
+ * See the accompanying LICENSE file for terms.
+ */
+
 const ce = require('embed-creator');
 const { version, Command } = require('discord-akairo');
 const discord = require('discord.js');

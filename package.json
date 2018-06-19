@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/FireController1847/slice#readme",
   "devDependencies": {
+    "country-data": "^0.0.31",
     "discord-akairo": "github:1Computer1/discord-akairo",
     "discord.js": "github:hydrabolt/discord.js",
     "embed-creator": "^1.2.3",
@@ -26,6 +27,7 @@
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.14",
     "mongodb": "^3.0.5",
-    "pretty-ms": "^3.1.0"
+    "pretty-ms": "^3.1.0",
+    "snekfetch": "^4.0.4"
   }
 }

@@ -10,7 +10,7 @@ const path = require('path');
 const { token } = require('./Data/Tokens.js');
 
 const client = new AkairoClient({
-  ownerID: '112732946774962176',
+  ownerID: ['112732946774962176', '187771864435785728'],
   prefix: 'sa$',
   allowMention: true,
   emitters: { process },

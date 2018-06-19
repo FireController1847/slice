@@ -46,8 +46,8 @@ class Information {
       `Text >> ${guild.channels.filter(ch => ch.type == 'text').size}\n` +
       `Voice >> ${guild.channels.filter(ch => ch.type == 'voice').size}`;
     this.roles = `Total >> ${guild.roles.size}\n` +
-      `Hidden >> ${guild.roles.filter(role => !role.hoisted).size}\n` +
-      `Hoisted >> ${guild.roles.filter(role => role.hoisted).size}\n`;
+      `Hidden >> ${guild.roles.filter(role => !role.hoist).size}\n` +
+      `Hoisted >> ${guild.roles.filter(role => role.hoist).size}\n`;
   }
 }
 class GuildInfo extends Command {

@@ -20,7 +20,7 @@ class Weather extends Command {
   async exec(m) {
     const city = m.content.slice(m.content.search(' ') + 1);
     const makeURL = city2 => `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.` +
-        `forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${encodeURIComponent(city2)}%22)` + 
+        `forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${encodeURIComponent(city2)}%22)` +
         `&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
     const celsius = fahrenheit => Math.round(((fahrenheit - 32) * 5) / 9);
     const json = await request.get(makeURL(city));
